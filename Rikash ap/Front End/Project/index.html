@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Online Appointment</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">  
+</head>
+
+<body>
+<!-- Begin user header  -->
+<section class="header">
+    <div class="flex">
+        <a href="index.html"><img src="img/imagelogo.png" alt="Your Logo"> </a>           
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="aboutus.html">About Us</a>     
+            <a href="gallery.html">Gallery</a>
+            <a href="contactus.html">Contact Us</a>   
+        </nav>     
+        <a href="appointment.html" class="sbtn">Make Appointment</a>
+        <div id="menu-btn" class="fas fa-bars menu-icon"></div>
+    </div>
+</section>
+<!-- End user header -->
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+    <span class="close-btn" id="close-btn">&times;</span>
+    </div>
+    <a href="index.html">
+        <img src="img/imagelogo.png" alt="Your Logo">
+    </a> 
+    <a href="index.html">Home</a>
+    <a href="appointment.html">Make Appointment</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contactus.html">Contact Us</a>
+</div>
+<!--End Mobile Menu -->
+
+<script>
+    // Get references to the menu button, mobile menu, and close button
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const closeBtn = document.getElementById("close-btn");
+
+    // Add a click event listener to the menu button
+    menuBtn.addEventListener("click", () => {
+        mobileMenu.style.display = "block";
+    });
+
+    // Add a click event listener to the close button
+    closeBtn.addEventListener("click", () => {
+        mobileMenu.style.display = "none";
+    });
+</script>
+
+
+
+<!-- home section starts  -->
+
+</head>
+<body>
+<div class="slider-container">
+   <img class="slider-image" src="img/appointmentslider1.png" alt="Image 1">
+   <img class="slider-image" src="img/image3.png" alt="Image 2">
+   <img class="slider-image" src="img/image2.png" alt="Image 3">
+
+   <button class="slider-button left-button" onclick="prevSlide()">&#8249;</button>
+   <button class="slider-button right-button" onclick="nextSlide()">&#8250;</button>
+</div>
+
+<script>
+   let currentSlide = 0;
+   const slides = document.querySelectorAll('.slider-image');
+
+   // Function to display the current slide
+   function showSlide() {
+       slides.forEach((slide, index) => {
+           if (index === currentSlide) {
+               slide.style.display = 'block';
+           } else {
+               slide.style.display = 'none';
+           }
+       });
+   }
+
+   // Function to show the previous slide
+   function prevSlide() {
+       currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+       showSlide();
+   }
+
+   // Function to show the next slide
+   function nextSlide() {
+       currentSlide = (currentSlide + 1) % slides.length;
+       showSlide();
+   }
+
+   // Automatically change slides every 3 seconds
+   setInterval(nextSlide, 3000);
+
+   // Show the initial slide
+   showSlide();
+</script>
+
+<!-- home section ends -->
+
+<!-- Banner Section -->
+<section class="about" id="about">
+    <center>  
+    <section class="aboutr">
+    <div class="mainss">
+    <img src="img/image1.jpg">
+    <div class="aboutr-text">
+    <h1 align="left">The Jobs Colombo</h1>  
+    <h5 align="left">&nbsp;Unlocking Your,<span> Career Potential</span></h5>
+    <p align="JUSTIFY">Unlock your career potential with our expert job consultation services. We offer tailored guidance and insights to help you navigate the job market, optimize your resume, and excel in interviews. Take the first step toward your dream career today.</p>
+    <button type="button">
+    <div align="left"><a href="appointment.html" class="button"><h3>MAKE APPOINTMENT</h3></a></div>
+    </button>
+    </center>  
+    </div>
+    </div>  
+    </section> 
+    </section>
+    <!-- bnner section ends -->
+
+
+
+
+
+    <section class="footer">
+        <div class="box-container">
+           <div class="box">
+             <div align="left"><img src="img/imagelogo2.png" alt="logo" width="350" height="100">
+               <a href="aboutus.php">UNLOCKING YOUR CAREER <br />POTENTIAL TOGETHER</a></div><div>
+               <a href="file:///C:/Users/Rikash/Desktop/Rikash%20ap/Front%20End/Admin%20Panel/index.html" class="fbtn">Admin Login</a></div>     
+           </div>   
+           <div class="box">
+              <a href="+94 779019021"><i class="fas fa-phone"></i> +94 779019021</a>
+              <a href="+94 2932235"><i class="fas fa-phone"></i> +94 2932235</a>
+              <a href="mailto:rikash@gmail.com"><i class="fas fa-envelope"></i> rikash@gmail.com</a>
+              <a href="mailto:tuanrikash@gmail.com"><i class="fas fa-envelope"></i> tuanrikash@gmail.com</a>
+              <a href="#"><i class="fas fa-map-marker-alt"></i> No01, The Job, Colombo.</a>
+           </div>
+           <div class="box">
+            <a href="index.html">Home</a>
+            <a href="aboutus.html">About Us</a>     
+            <a href="gallery.html">Gallery</a>
+            <a href="contactus.html">Contact Us</a>       
+            <a href="userdetail.html">Make Appointment</a>    
+           </div> 
+           <div class="box">
+              <a href="#"><i class="fab fa-facebook-f"></i>  Facebook </a>
+              <a href="#"><i class="fab fa-linkedin"> </i>  Linkedin </a>
+              <a href="#"><i class="fab fa-instagram"> </i>  Instagram </a>
+              <a href="#"><i class="fab fa-twitter"> </i>  Twitter </a>
+              <a href="#"><i class="fab fa-youtube"> </i> Youtube </a>
+           </div>
+        </div>
+        <div class="credit">
+        <class="credit1">2023 by Rikash Advanced Programming assesment | all rights reseved!      &ensp;    <img src="img/payments.png" alt="payment" > 
+        </div>
+     </section>
+          <!-- footer section end  -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+ 
+
+
+</body>
+
+</html>

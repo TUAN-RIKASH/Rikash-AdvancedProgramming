@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin Panel</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <script src="api/jquery-3.6.4.min.js"></script>
+<script src="api/Consultant.js"></script>
+</head>
+
+<body>
+    <style>
+        
+    :root{
+       --main-color:#ffffff;
+       --sub-color:#000;
+       --white:#fff;
+       --border:.1rem solid rgba(220, 198, 156, .3);
+    }
+    
+    *{
+       font-family: 'Montserrat', sans-serif;
+       margin: 0; padding: 0;
+       box-sizing: border-box;
+       outline: none; border: none;
+       text-decoration: none;
+    }
+    
+    *::selection{
+       background-color: var(--sub-color);
+       color: var(--main-color);
+    }
+    
+    html{
+       font-size: 62.5%;
+       overflow-x: hidden;
+       scroll-behavior: smooth;
+       scroll-padding-top: 2rem;
+       
+    }
+    
+    body{
+       background-color: var(--main-color);
+       /* padding-bottom: 7.5rem; */
+     
+    }
+    
+    
+    a:hover {
+       text-decoration: none;
+    }
+    
+    .sbtn{
+       
+       display: inline-block;
+       cursor: pointer;
+       padding: 1rem 3rem;
+       border: var(--border);
+       font-size: 1.8rem;
+       color: #000;
+       text-align: center;
+       text-transform: capitalize;
+       transition: .2s linear;
+       margin-top: 1rem;
+       margin-left:3rem;
+       background-color:#FFF;
+       
+    }
+    
+    .sbtn:hover{
+       border-radius: 5rem;
+       background-color:#000 ;
+       color:#ffffff ;
+       border-color:#ffffff;
+    }
+    
+    
+    
+    
+    
+    /* existing styles for larger screens */
+    .header {
+       padding-bottom: 0;
+       
+    }
+    
+    .header .flex {
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       gap: 0.2rem;
+       padding-top: 5px;
+       padding-left: 150px;
+       padding-right: 90px;
+       background-color: #000;
+       
+    }
+    
+    .header .flex .logo {
+       color: #000;
+       font-size: 2.5rem;
+    }
+    
+    .header .flex .btn {
+       margin-top: 0;
+    }
+    
+    .header .flex .fa-bars {
+       font-size: 3rem;
+       cursor: pointer;
+       color: rgb(255, 255, 255);
+       display: none;
+    }
+    
+    .header .navbar {
+       display: flex;
+       align-items: center;
+       justify-content: space-around;
+       gap: 1.5rem;
+       margin-top: 0rem;
+       background-color: ;
+       padding: 0.6rem;
+       border-radius: 0.5rem;
+       
+    }
+    
+    .header .navbar a {
+       font-size: 1.8rem;
+       color: #ffffff;
+       padding: 1rem 3rem;
+       border-radius: 0.5rem;
+       
+    }
+    
+    .header .navbar a:hover {
+       background-color: #ffffff;
+       color: #000;
+    }
+    
+    /* responsive styles for tablet and mobile */
+    @media screen and (max-width: 768px) {
+       .header .flex {
+           padding-left: 20px;
+           padding-right: 20px;
+       }
+    
+       .header .flex .logo {
+           font-size: 2rem;
+       }
+    
+       .header .flex .fa-bars {
+           display: block;
+       }
+    
+       .header .navbar {
+           display: none; /* Hide the navbar by default on smaller screens */
+           flex-direction: column;
+           align-items: center;
+           text-align: center;
+       }
+    
+       .header .navbar.active {
+           display: flex; /* Show the navbar when active (menu button clicked) */
+       }
+    
+       .header .navbar a {
+           font-size: 1.6rem;
+           padding: 1rem 0;
+       }
+    }
+    
+    
+    
+    /* CSS for Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            text-align: center;
+            padding-top: 100px;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+        
+        /* CSS for Mobile Menu Header */
+        .mobile-menu-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    
+    
+        .menu-icon {
+        color: white; /* Set the color to white */
+        font-size: 24px; /* Adjust the font size as needed */
+        cursor: pointer;
+    }
+        
+        .close-btn {
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        
+       
+    
+    
+    
+    
+    #myBtn {
+      display: none; /* Hidden by default */
+      position: fixed; /* Fixed/sticky position */
+      bottom: 20px; /* Place the button at the bottom of the page */
+      right: 30px; /* Place the button 30px from the right */
+      z-index: 99; /* Make sure it does not overlap */
+      border: none; /* Remove borders */
+      outline: none; /* Remove outline */
+      background-color: red; /* Set a background color */
+      color: white; /* Text color */
+      cursor: pointer; /* Add a mouse pointer on hover */
+      padding: 15px; /* Some padding */
+      border-radius: 10px; /* Rounded corners */
+      font-size: 18px; /* Increase font size */
+    }
+    
+    #myBtn:hover {
+      background-color: #555; /* Add a dark-grey background on hover */
+    }
+    </style>
+    
+    <!-- Begin user header  -->
+    <section class="header">
+        <div class="flex">
+            <a href="./index.html"><img src="img/imagelogo.png" alt="Your Logo"> </a>           
+            <nav class="navbar">
+                <a href="dashboard.html">View Appointments</a>
+                <a href="Consultant.html">View Consulants</a>     
+                <a href="Users.html">View Users</a>
+                
+            </nav>     
+            <a href="#" class="sbtn">Website</a>
+            <div id="menu-btn" class="fas fa-bars menu-icon"></div>
+        </div>
+    </section>
+    <!-- End user header -->
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-header">
+        <span class="close-btn" id="close-btn">&times;</span>
+        </div>
+        <a href="./index.html">
+            <img src="img/imagelogo.png" alt="Your Logo">
+        </a> 
+        <a href="dashboard.html">View Appointments</a>
+        <a href="Consultant.html">View Consultants</a>
+        <a href="Users.html">View Users</a>
+     
+    </div>
+    <!--End Mobile Menu -->
+    
+    <script>
+        // Get references to the menu button, mobile menu, and close button
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const closeBtn = document.getElementById("close-btn");
+    
+        // Add a click event listener to the menu button
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.style.display = "block";
+        });
+    
+        // Add a click event listener to the close button
+        closeBtn.addEventListener("click", () => {
+            mobileMenu.style.display = "none";
+        });
+    </script>
+    
+    
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <!-- Spinner End -->
+
+<STYLE>/* General Styles */
+
+    /* Reset some default Bootstrap styles */
+    body {
+        font-family: Arial, sans-serif;
+    }
+    
+    /* Page container styles */
+    .container-fluid {
+        padding: 20px;
+    }
+    
+    /* Table Styles */
+    
+    /* Make the table responsive */
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    /* Table header styles */
+    .table thead th {
+        text-align: center;
+    }
+    
+    /* Form Styles */
+    
+    /* Form container styles */
+    .bg-light.rounded {
+        padding: 20px;
+        border: 1px solid rgb(75, 75, 75);
+        border-radius: 10px;
+    }
+    
+    /* Form label styles */
+    .col-form-label {
+        font-weight: bold;
+    }
+    
+    /* Form input styles */
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+    
+    /* Button Styles */
+    
+    /* Common button styles */
+    .btn {margin-top: 10PX;
+        font-weight: bold;
+        margin-right: 10px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    
+    /* Success button styles */
+    .btn-success {
+        background-color: #00ff3c;
+        border-color: #28a745;
+        
+    }
+    
+    /* Secondary button styles */
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+    
+    /* Danger button styles */
+    .btn-danger {
+        background-color: #ff011a;
+        border-color: #dc3545;
+    }
+    
+    /* Warning button styles */
+    .btn-warning {
+        background-color: #008cff;
+        border-color: #3300ff;
+        color: #333; /* Dark text on a lighter background */
+        text-shadow: none; /* Remove text shadow */
+    }
+    
+    /* Text color for buttons */
+    .btn-danger, .btn-warning {
+        color: #fff; /* Light text on a dark background */
+    }
+    
+    /* Hover and active styles for buttons */
+    .btn:hover, .btn:focus {
+        opacity: 0.8;
+    }
+    
+    /* Disable input styles */
+    input[disabled] {
+        background-color: #f0f0f0;
+        cursor: not-allowed;
+    }
+
+    /* Table Styles */
+
+/* Table container styles */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Table styles */
+.table {
+    margin: 30PX;
+    font-size: 1.2rem; /* Increase text size */
+    border-collapse: collapse;
+    width: 96%;
+    font-size:15PX;
+}
+
+/* Table header styles */
+.table thead th {
+    background-color: #001730; /* Blue header background color */
+    color: #fff; /* White text color */
+    text-align: center;
+    font-size: 1.4rem; /* Increase header text size */
+}
+
+/* Table cell styles */
+.table tbody td {
+    text-align: center;
+}
+
+/* Alternating row background colors */
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect on table rows */
+.table tbody tr:hover {
+    background-color: #cce5ff; /* Light blue on hover */
+}
+
+    </STYLE>
+   
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">NIC</th>
+                                    <th scope="col">Start Time</th>
+                                    <th scope="col">End Time</th>
+                                    <th scope="col">Password</th>
+                                </tr>
+                            </thead>
+                            <tbody id="prodTable">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="bg-light rounded h-100 p-4">
+                         
+                            <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Consultant ID</label>
+                                <div class="col-sm-10">
+                                    <input disabled type="text" class="form-control" id="input1" >
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Consultant Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="input2" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Consultant Email</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="input3" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Consultant NIC</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="input4" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Start Time</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="input5" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">End Time</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"  id="input6" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"  id="input7" required>
+                                </div>
+                            </div>
+        
+                            <button type="submit" class="btn btn-success fw-bold" onclick="saveEmp()">Submit</button>
+                            <button type="reset" class="btn btn-secondary fw-bold" onclick="updateEmp()">Update</button>
+                            <button type="reset" class="btn btn-danger fw-bold " onclick="deleteEmp()">Delete</button>
+                            <button type="reset" class="btn btn-warning fw-bold text-dark" onclick="resetEmp()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+    </div>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .credit {
+            background-color: lightgray;
+            color: black;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 17px; /* Increased font size */
+        }
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 17px; /* Increased font size */
+        }
+    </style>
+    
+    <div class="footer">
+    This is Admin dashboard
+    </div>
+    <div class="credit">
+        Designed and Developed 2023</span> | Designed by Rikash Samsudeen
+    </div>
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

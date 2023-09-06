@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login User</title>
+</head>
+
+
+
+
+<STYLE>
+
+
+
+
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('img/appointment2.png');
+  background-size: cover;
+  background-position: center;
+}
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.user_options-container {
+  background-color: #000000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(247, 242, 242, 0.1);
+  display: flex;
+  overflow: hidden;
+}
+
+.user_options-forms {
+  flex: 2;
+  padding: 20px;
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url('img/banner2.png');
+  background-size: cover;
+  background-position: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('img/wallpaper.png');
+  background-size: cover;
+  background-position: center;
+}
+    
+    .user_options-text {
+      flex: 1;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .user_options-unregistered,
+    .user_options-registered {
+      margin-bottom: 20px;
+    }
+    
+    .user_unregistered-title,
+    .user_registered-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    
+    .user_unregistered-signup,
+    .user_registered-login {
+      background-color: #686868;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .user_unregistered-signup:hover,
+    .user_registered-login:hover {
+      background-color: #adadad;
+    }
+    
+    .user_options-forms {
+      flex: 2;
+      padding: 20px;
+      background-color: #007bff;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .forms_title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    .forms_form {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+  
+    }
+
+    .forms_field-input::placeholder {
+  color: #fff;
+}
+    
+    .forms_field-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #fff; /* White border */
+  border-radius: 5px; /* Border radius */
+  background: transparent; /* Transparent background */
+  color: #fff; /* Text color */
+}
+
+  .forms_form{
+    border: none; /* or border: 0; for completely removing the border */
+}
+    
+    .forms_buttons-action {
+      background-color: #9a9a9a;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 7px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .forms_buttons-action:hover {
+      background-color: #363636;
+    }
+
+    .forms_field{
+      border: none; /* Remove the border */
+      outline: none; /* Remove the outline (focus border) */
+    }
+
+    .forms_fieldset{
+        border:none;
+    }
+
+    .user_unregistered-title{
+        margin-top: 40px;
+    }
+    </STYLE>
+
+<section class="user">
+    <div class="user_options-container">
+      <div class="user_options-text">
+        <div class="user_options-unregistered">
+          <h2 class="user_unregistered-title">Join Now</h2>
+          <button class="user_unregistered-signup" id="signup-button">Sign up</button>
+        </div>
+  
+        <div class="user_options-registered">
+          <h2 class="user_registered-title">Already a Member</h2>
+          <button class="user_registered-login" id="login-button">Login</button>
+        </div>
+      </div>
+  
+      <div class="user_options-forms" id="user_options-forms">
+        <!-- Signup Form -->
+        <div class="user_forms-signup">
+          <h2 class="forms_title">Sign Up</h2>
+          <div class="forms_form">
+            <fieldset class="forms_fieldset">
+              <div class="forms_field">
+                <input type="text" placeholder="Name" id="input1" class="forms_field-input" required />
+              </div>
+              <div class="forms_field">
+                <input type="text" placeholder="Address" id="input2" class="forms_field-input" required />
+              </div>
+              <div class="forms_field">
+                <input type="text" placeholder="Mobile" id="input3" class="forms_field-input" required />
+              </div>
+              <div class="forms_field">
+                <input type="password" placeholder="Password" id="input4" class="forms_field-input" required />
+              </div>
+              <div class="forms_field">
+                <input type="password" placeholder="Confirm Password" id="input5" class="forms_field-input" required />
+              </div>
+            </fieldset>
+            <div class="forms_buttons">
+              <input value="Sign up" onclick="signUp()" class="forms_buttons-action">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Login Form (Initially Hidden) -->
+        <div class="user_forms-login" style="display: none;">
+          <h2 class="forms_title">Login</h2>
+          <div class="forms_form">
+            <fieldset class="forms_fieldset">
+              <div class="forms_field">
+                <input type="text" placeholder="Username" class="forms_field-input" id="yourUsername" required autofocus />
+              </div>
+              <div class="forms_field">
+                <input type="password" placeholder="Password" class="forms_field-input" id="yourPassword" required />
+              </div>
+            </fieldset>
+            <div class="forms_buttons">
+              <input value="Log In" onclick="login()" class="forms_buttons-action">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+<script>// Function to toggle between login and signup forms
+    function toggleForm() {
+      const formsContainer = document.getElementById("user_options-forms");
+      const loginButton = document.getElementById("login-button");
+      const signupButton = document.getElementById("signup-button");
+    
+      loginButton.addEventListener("click", () => {
+        // Hide signup form and show login form
+        formsContainer.querySelector(".user_forms-signup").style.display = "none";
+        formsContainer.querySelector(".user_forms-login").style.display = "block";
+      });
+    
+      signupButton.addEventListener("click", () => {
+        // Hide login form and show signup form
+        formsContainer.querySelector(".user_forms-login").style.display = "none";
+        formsContainer.querySelector(".user_forms-signup").style.display = "block";
+      });
+    }
+    
+    // Function to handle login (You can implement your login logic here)
+    function login() {
+      const username = document.getElementById("yourUsername").value;
+      const password = document.getElementById("yourPassword").value;
+    
+      // Implement your login logic here
+      // For now, let's just show an alert
+      alert("Login clicked. Implement your login logic here.");
+    }
+    
+    // Function to handle signup (You can implement your signup logic here)
+    function signUp() {
+      // Implement your signup logic here
+      // For now, let's just show an alert
+      alert("Sign up clicked. Implement your signup logic here.");
+    }
+    
+    // Initialize the toggle function
+    toggleForm();
+    </script>
+
+    
+    <script>
+        /**
+         * Variables
+         */
+        const signupButton = document.getElementById('signup-button'),
+            loginButton = document.getElementById('login-button'),
+            userForms = document.getElementById('user_options-forms')
+
+        /**
+         * Add event listener to the "Sign Up" button
+         */
+        signupButton.addEventListener('click', () => {
+            userForms.classList.remove('bounceRight')
+            userForms.classList.add('bounceLeft')
+        }, false)
+
+        /**
+         * Add event listener to the "Login" button
+         */
+        loginButton.addEventListener('click', () => {
+            userForms.classList.remove('bounceLeft')
+            userForms.classList.add('bounceRight')
+        }, false)
+
+    window.onload = function () {
+      var urlParams = new URLSearchParams(window.location.search);
+      var c_name = urlParams.get('name');
+
+      if (c_name) {
+        // Store the name in session storage
+        sessionStorage.setItem('name', c_name);
+        console.log(c_name);
+      }
+    }
+
+    function signUp() {
+      const name = document.getElementById("input1").value;
+      const address = document.getElementById("input2").value;
+      const mobile = document.getElementById("input3").value;
+      const password = document.getElementById("input4").value;
+      const confirmPassword = document.getElementById("input5").value;
+
+      // Check if passwords match
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+
+      const userData = {
+        name: name,
+        address: address,
+        mobile: mobile,
+        password: password
+      };
+
+      // Send the POST request to the API endpoint
+      fetch("http://localhost:8080/api/v1/users/saveusers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userData)
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Handle the API response here
+           sessionStorage.setItem("userName", data.name);
+          console.log(`Welcome, ${data.name}!`);
+          window.location.href = 'appointment.html';
+          // You can redirect the user to a success page or perform other actions
+        })
+        .catch(error => {
+          console.error("Error signing up:", error);
+          // Handle the error (e.g., show an error message)
+        });
+    }
+
+
+    function login() {
+      const username = document.getElementById("yourUsername").value;
+      const password = document.getElementById("yourPassword").value;
+
+      // API endpoint
+      const apiUrl = "http://localhost:8080/api/v1/consult/login";
+
+      // Data to be sent in the request body
+      const data = {
+        name: username,
+        password: password
+      };
+
+      fetch(apiUrl, {
+        method: "POST", // or "GET" depending on your API
+        headers: {
+          "Content-Type": "application/json"
+          // You might need to include other headers like authentication tokens
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(result => {
+          // Handle the API response here
+          const user = result.data;
+
+          // Store the user's name in sessionStorage
+          sessionStorage.setItem("userName", data.name);
+          console.log(`Welcome, ${data.name}!`);
+          window.location.href = 'appointment.html';
+          
+        })
+        .catch(error => {
+          // Handle errors here
+          console.error("Error:", error);
+        });
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

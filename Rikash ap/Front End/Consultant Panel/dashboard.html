@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Consultant Panel</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link href="img/favicon.ico" rel="icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="api/jquery-3.6.4.min.js"></script>
+    <script src="api/appointment.js"></script>
+</head>
+
+<body>
+    <style>
+
+        :root{
+           --main-color:#ffffff;
+           --sub-color:#000;
+           --white:#fff;
+           --border:.1rem solid rgba(220, 198, 156, .3);
+        }
+        
+        *{
+           font-family: 'Montserrat', sans-serif;
+           margin: 0; padding: 0;
+           box-sizing: border-box;
+           outline: none; border: none;
+           text-decoration: none;
+        }
+        
+        *::selection{
+           background-color: var(--sub-color);
+           color: var(--main-color);
+        }
+        
+        html{
+           font-size: 62.5%;
+           overflow-x: hidden;
+           scroll-behavior: smooth;
+           scroll-padding-top: 2rem;
+           
+        }
+        
+        body{
+           background-color: var(--main-color);
+           /* padding-bottom: 7.5rem; */
+         
+        }
+        
+        
+        a:hover {
+           text-decoration: none;
+        }
+        
+        .sbtn{
+           
+           display: inline-block;
+           cursor: pointer;
+           padding: 1rem 3rem;
+           border: var(--border);
+           font-size: 1.8rem;
+           color: #000;
+           text-align: center;
+           text-transform: capitalize;
+           transition: .2s linear;
+           margin-top: 1rem;
+           margin-left:3rem;
+           background-color:#FFF;
+           border-radius: 20px;
+           
+        }
+        
+        .sbtn:hover{
+           border-radius: 5rem;
+           background-color:#000 ;
+           color:#ffffff ;
+           border-color:#ffffff;
+        }
+        
+        
+        
+        
+        
+        /* existing styles for larger screens */
+        .header {
+           padding-bottom: 0;
+           
+        }
+        
+        .header .flex {
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           gap: 0.2rem;
+           padding-top: 5px;
+           padding-left: 150px;
+           padding-right: 90px;
+           background-color: #000;
+           
+        }
+        
+        .header .flex .logo {
+           color: #000;
+           font-size: 2.5rem;
+        }
+        
+        .fontm{
+            font-size: large;
+            color: #FFF;
+        }
+        
+        
+        </style>
+        
+        <!-- Begin user header  -->
+        <section class="header">
+            <div class="flex">
+                <a href=""><img src="img/imagelogo.png" alt="Your Logo"> </a>           
+                 <h2 class="fontm">Welcome Consultant !</h2>
+                <a href="file:///C:/Users/Rikash/Desktop/Rikash%20ap/Front%20End/Project/index.html" class="sbtn">View Site</a>
+                <div id="menu-btn" class="fas fa-bars menu-icon"></div>
+            </div>
+        </section>
+        <!-- End user header -->
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+      
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+       
+
+
+    
+        <style>
+
+.btn-primary {
+        background-color: #04ee04; /* Lime Green */
+        color: #fff; /* White */
+        border: 2px solid #003200; /* Dark Green border */
+        border-radius: 10px; /* Rounded corners */
+        padding: 10px;
+    }
+
+    /* Style the "Danger" button as red */
+    .btn-danger {
+        background-color: #ff4500; /* Orange Red */
+        color: #fff; /* White */
+        border: 2px solid #ff0000; /* Dark Red border */
+        border-radius: 10px; /* Rounded corners */
+        padding: 10px;
+        margin-left: 10px;
+    }
+
+    /* Hover effect for the "Primary" button */
+.btn-primary:hover {
+    background-color: #000000; /* Lighter Green */
+    border-color: #00ff1a; /* Darker Green border */
+}
+
+/* Hover effect for the "Danger" button */
+.btn-danger:hover {
+    background-color: #000000; /* Lighter Orange Red */
+    border-color: #ff0000; /* Darker Red border */
+}
+            /* Center the container and add margins */
+            .container-fluid {
+                margin-top: 20px;
+                text-align: center;
+                font-size: large;
+            }
+        
+            /* Add padding and background color to the table container */
+            .bg-light {
+                padding: 20px;
+                background-color: #f0f8ff; /* Light Blue */
+                border-radius: 10px;
+            }
+        
+            /* Style the table */
+            #datatable {
+                width: 90%; /* Make the table slightly bigger */
+                margin: 0 auto; /* Center the table horizontally */
+                border: 2px solid #4169e1; /* Blue */
+                border-collapse: collapse;
+            }
+        
+            /* Style table headers */
+            #datatable th {
+                background-color: #4169e1; /* Blue */
+                color: #fff; /* White */
+                padding: 10px;
+            }
+        
+            /* Style table cells */
+            #datatable td {
+                padding: 8px;
+                border: 1px solid #87cefa; /* Light Sky Blue */
+            }
+        
+            /* Style the "Manage" column */
+            #datatable td:last-child {
+                background-color: #87cefa; /* Light Sky Blue */
+                color: #000; /* Black */
+            }
+            
+
+            #datatable td:last-child {
+        background-color: #87cefa; /* Light Sky Blue */
+        color: #000; /* Black */
+    }
+
+
+        </style>
+       
+
+           
+            <div class="container-fluid pt-4 px-4 mt-5">
+                <div class="bg-light text-center rounded p-4">
+                 
+                    <div class="table-responsive">
+                        <table id="datatable" class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Consultant Name</th>
+                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Book Date</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Contact</th>
+                                    <th scope="col">Manage</th>
+                                </tr>
+                            </thead>
+                            <tbody id="prodTable">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .credit {
+            background-color: lightgray;
+            color: black;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 17px; /* Increased font size */
+        }
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 17px; /* Increased font size */
+        }
+    </style>
+
+<div class="footer">
+    This is consultant dashboard
+</div>
+    <div class="credit">
+        Developed Year: <span id="currentYear"></span> | Designed by Rikash Samsudeen
+    </div>
+   
+
+    <script>
+        // JavaScript to dynamically set the current year
+        const currentYearElement = document.getElementById('currentYear');
+        const currentYear = new Date().getFullYear();
+        currentYearElement.textContent = currentYear;
+    </script>
+
+    
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
