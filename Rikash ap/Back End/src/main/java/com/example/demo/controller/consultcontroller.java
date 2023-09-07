@@ -15,13 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.consult;
 import com.example.demo.repository.consultRepo;
 import com.example.demo.response.response;
-
 @CrossOrigin
 @RestController
 @RequestMapping("/api/v1/consult/")
