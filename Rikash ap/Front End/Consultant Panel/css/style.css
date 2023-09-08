@@ -8,8 +8,8 @@
 .back-to-top {
     position: fixed;
     display: none;
-    right: 45px;
-    bottom: 45px;
+    right: 40px;
+    bottom: 40px;
     z-index: 99;
 }
 
