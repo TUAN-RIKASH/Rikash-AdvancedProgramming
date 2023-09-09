@@ -4,7 +4,10 @@ function saveEmp() {
     let address = $("#input4").val();
     let mobile = $("#input5").val();
     let password = $("#input6").val();
-
+    if (!name || !address|| !mobile|| !password) {
+        alert("Please fill out all required fields.");
+        return;
+    }
     $.ajax({
         method: "POST",
         contentType: "application/json",
