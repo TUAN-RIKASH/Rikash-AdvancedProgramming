@@ -127,6 +127,9 @@ function resetEmp() {
     let s_time = $("#input5").val("");
     let e_time = $("#input6").val("");
     let password = $("#input7").val("");
+
+    
+    alert("Table resetted Successfully");
 }
 
 
