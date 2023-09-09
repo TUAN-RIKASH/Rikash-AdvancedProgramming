@@ -185,15 +185,19 @@ font-weight: bold; /* Make the font bold */
 
   
 
-     <script>
+    <script>
         function login() {
             var username = document.getElementById("yourUsername").value;
             var password = document.getElementById("yourPassword").value;
-
+    
             if (username === "rikash@gmail.com" && password === "rikash") {
                 window.location.href = "dashboard.html";
-            } else {
-                alert("Invalid username or password.");
+            } else if (username !== "rikash@gmail.com" && password !== "rikash") {
+                alert("Invalid username and password.");
+            } else if (username !== "rikash@gmail.com") {
+                alert("Invalid username.");
+            } else if (password !== "rikash") {
+                alert("Invalid password.");
             }
         }
     </script>
