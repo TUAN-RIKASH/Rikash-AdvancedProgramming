@@ -281,123 +281,138 @@ body {
     toggleForm();
     </script>
 
-    
-    <script>
-        /**
-         * Variables
-         */
-        const signupButton = document.getElementById('signup-button'),
-            loginButton = document.getElementById('login-button'),
-            userForms = document.getElementById('user_options-forms')
 
-        /**
-         * Add event listener to the "Sign Up" button
-         */
-        signupButton.addEventListener('click', () => {
-            userForms.classList.remove('bounceRight')
-            userForms.classList.add('bounceLeft')
-        }, false)
+<script>
+  function toggleForm() {
+   const formsContainer = document.getElementById("user_options-forms");
+   const loginButton = document.getElementById("login-button");
+   const signupButton = document.getElementById("signup-button");
 
-        /**
-         * Add event listener to the "Login" button
-         */
-        loginButton.addEventListener('click', () => {
-            userForms.classList.remove('bounceLeft')
-            userForms.classList.add('bounceRight')
-        }, false)
+   loginButton.addEventListener("click", () => {
+       // Hide signup form and show login form
+       formsContainer.querySelector(".user_forms-signup").style.display = "none";
+       formsContainer.querySelector(".user_forms-login").style.display = "block";
+   });
 
-    window.onload = function () {
-      var urlParams = new URLSearchParams(window.location.search);
-      var c_name = urlParams.get('name');
+   signupButton.addEventListener("click", () => {
+       // Hide login form and show signup form
+       formsContainer.querySelector(".user_forms-login").style.display = "none";
+       formsContainer.querySelector(".user_forms-signup").style.display = "block";
+   });
+}
 
-      if (c_name) {
-        // Store the name in session storage
-        sessionStorage.setItem('name', c_name);
-        console.log(c_name);
-      }
-    }
+// Function to handle login
+function login() {
+ const username = document.getElementById("yourUsername").value;
+ const password = document.getElementById("yourPassword").value;
 
-    function signUp() {
-      const name = document.getElementById("input1").value;
-      const address = document.getElementById("input2").value;
-      const mobile = document.getElementById("input3").value;
-      const password = document.getElementById("input4").value;
-      const confirmPassword = document.getElementById("input5").value;
+ // Check if username and password are not empty
+ if (!username || !password) {
+   if (!username) {
+     alert("Username is required.");
+   }
+   if (!password) {
+     alert("Password is required.");
+   }
+   return;
+ }
 
-      // Check if passwords match
-      if (password !== confirmPassword) {
-        alert("Passwords do not match");
-        return;
-      }
+ // API endpoint
+ const apiUrl = "http://localhost:8080/api/v1/users/login";
 
-      const userData = {
-        name: name,
-        address: address,
-        mobile: mobile,
-        password: password
-      };
+ // Data to be sent in the request body
+ const data = {
+   name: username,
+   password: password
+ };
 
-      // Send the POST request to the API endpoint
-      fetch("http://localhost:8080/api/v1/users/saveusers", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(userData)
-      })
-        .then(response => response.json())
-        .then(data => {
-          // Handle the API response here
-           sessionStorage.setItem("userName", data.name);
-          console.log(`Welcome, ${data.name}!`);
-          window.location.href = 'appointment.html';
-          // You can redirect the user to a success page or perform other actions
-        })
-        .catch(error => {
-          console.error("Error signing up:", error);
-          // Handle the error (e.g., show an error message)
-        });
-    }
+ fetch(apiUrl, {
+   method: "POST",
+   headers: {
+     "Content-Type": "application/json"
+     // You might need to include other headers like authentication tokens
+   },
+   body: JSON.stringify(data)
+ })
+   .then(response => {
+     if (!response.ok) {
+       throw new Error(`HTTP error! Status: ${response.status}`);
+     }
+     return response.json();
+   })
+   .then(result => {
+     // Handle the API response here
+     const user = result.data;
+
+     // Store the user's name in sessionStorage
+     sessionStorage.setItem("userName", user.name);
+     console.log(`Welcome, ${user.name}!`);
+     window.location.href = 'appointment.html';
+   })
+   .catch(error => {
+     // Handle errors here
+     console.error("Error:", error);
+     // Display an error message to the user
+     alert("Login failed. Please check your credentials and try again.");
+   });
+}
 
 
-    function login() {
-      const username = document.getElementById("yourUsername").value;
-      const password = document.getElementById("yourPassword").value;
+// Function to handle signup
+function signUp() {
+   const name = document.getElementById("input1").value;
+   const address = document.getElementById("input2").value;
+   const mobile = document.getElementById("input3").value;
+   const password = document.getElementById("input4").value;
+   const confirmPassword = document.getElementById("input5").value;
 
-      // API endpoint
-      const apiUrl = "http://localhost:8080/api/v1/consult/login";
+   // Check if passwords match
+   if (password !== confirmPassword) {
+       alert("Passwords do not match");
+       return;
+   }
 
-      // Data to be sent in the request body
-      const data = {
-        name: username,
-        password: password
-      };
+   // Check if all fields are filled
+   if (!name || !address || !mobile || !password) {
+       alert("Please fill in all the fields.");
+       return;
+   }
 
-      fetch(apiUrl, {
-        method: "POST", // or "GET" depending on your API
-        headers: {
-          "Content-Type": "application/json"
-          // You might need to include other headers like authentication tokens
-        },
-        body: JSON.stringify(data)
-      })
-        .then(response => response.json())
-        .then(result => {
-          // Handle the API response here
-          const user = result.data;
+   const userData = {
+       name: name,
+       address: address,
+       mobile: mobile,
+       password: password
+   };
 
-          // Store the user's name in sessionStorage
-          sessionStorage.setItem("userName", data.name);
-          console.log(`Welcome, ${data.name}!`);
-          window.location.href = 'appointment.html';
-          
-        })
-        .catch(error => {
-          // Handle errors here
-          console.error("Error:", error);
-        });
-    }
-  </script>
+   // Send the POST request to the API endpoint
+   fetch("http://localhost:8080/api/v1/users/saveusers", {
+       method: "POST",
+       headers: {
+           "Content-Type": "application/json"
+       },
+       body: JSON.stringify(userData)
+   })
+   .then(response => response.json())
+   .then(data => {
+       // Handle the API response here
+       sessionStorage.setItem("userName", data.name);
+       console.log(`Welcome, ${data.name}!`);
+       window.location.href = 'appointment.html';
+       // You can redirect the user to a success page or perform other actions
+   })
+   .catch(error => {
+       console.error("Error signing up:", error);
+       // Handle the error (e.g., show an error message)
+   });
+}
+
+
+// Initialize the toggle function
+toggleForm();
+</script>
+
+
 
 
 
